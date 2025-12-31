@@ -1,0 +1,92 @@
+/* Efeitos Personalizados para Efeito Uau */
+
+/* Scrollbar Bonita */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #008751;
+}
+
+/* Corte Moderno na imagem do Hero */
+.custom-clip-path {
+    clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 1024px) {
+    .custom-clip-path {
+        clip-path: none;
+    }
+}
+
+/* Animações de Entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+/* Animação de Brilho no Botão */
+@keyframes shine {
+    100% {
+        transform: translateX(100%);
+    }
+}
+.animate-shine {
+    animation: shine 2s infinite;
+}
+
+/* Float Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Zoom Lento no fundo */
+@keyframes zoomSlow {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+.animate-zoom-slow {
+    animation: zoomSlow 20s linear infinite alternate;
+}
+
+/* Classes para JS Scroll Reveal */
+.reveal-up, .reveal-left, .reveal-right {
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.17, 0.55, 0.55, 1);
+}
+
+.reveal-up { transform: translateY(50px); }
+.reveal-left { transform: translateX(-50px); }
+.reveal-right { transform: translateX(50px); }
+
+.reveal-up.active, .reveal-left.active, .reveal-right.active {
+    opacity: 1;
+    transform: translate(0);
+}
