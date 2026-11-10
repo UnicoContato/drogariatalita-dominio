@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - Unico Contato</title>
+  <script type="module">
+    (function loadOmniChat(document) {
+      window.omniChatQueueId = 12;
+      window.omniChatDomain = 'fragosodrogas.atenderbem.com';
+
+      var initializationRequested = false;
+
+      function showChat() {
+        if (window.omniChat.viewState !== 'opened') {
+          window.omniChat.show();
+        }
+      }
+
+      function initializeChat() {
+        if (!window.omniChat || !window.omniChat.configLoaded) {
+          window.setTimeout(initializeChat, 50);
+          return;
+        }
+
+        if (initializationRequested) return;
+        initializationRequested = true;
+
+        var initializedListenerId = window.omniChat.on('initialized', function () {
+          showChat();
+          window.omniChat.off('initialized', initializedListenerId);
+        });
+
+        window.omniChat.initialize();
+      }
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://wc.a-tend.online/omnichat.min.js';
+      script.addEventListener('load', initializeChat);
+      (document.head || document.body).appendChild(script);
+    })(document);
+  </script>
+</head>
+<body>
+</body>
+</html>
